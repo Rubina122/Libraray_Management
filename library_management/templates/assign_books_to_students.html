@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign Books</title>
+    <style>
+        table, tr, td, th {
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+
+  <div>
+      <div>
+          <button><a href="/">Home</a></button>
+      </div>
+    <div>
+        <label for="books-select"> Books </label>
+        <select id="books-select">
+            {% for book in books %}
+              <option value="{{book.id}}">{{book.title}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="student-select"> Students </label>
+        <select id="student-select">
+            {% for student in students %}
+              <option value="{{student.id}}">{{student.name}}</option>
+            {% endfor %}
+        </select>
+
+        <button id="assign" onclick="assign_book()"> Assign Book</button>
+    </div>
+      <br>
+      <br>
+      <h1> List of Assigned Books </h1>
+      <div>
+          <table>
+              <thead>
+                <th>Student Name</th>
+                <th>Book Title</th>
+                <th>Due Date</th>
+                <th>Return Date</th>
+              </thead>
+              <tbody>
+                {% for book in assigned_books %}
+                    {% if book.returned_date %}
+                        <tr style="background:green;color:#ffff;">
+                    {% else %}
+                            <tr style="background:red;color:#ffff;">
+                    {% endif %}
+                        <td>{{book.student_name}}</td>
+                        <td>{{book.book_name}}</td>
+                        <td>{{book.due_date}}</td>
+                        <td>{{book.returned_date}}</td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+    <script>
+        function assign_book() {
+            var e = document.getElementById("books-select");
+            var book_id = e.value;
+            var e1 = document.getElementById("student-select");
+            var student_id = e1.value;
+            window.location.href = "/assign/book/" + book_id + "/student/" + student_id;
+        }
+    </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign Books</title>
+    <style>
+        table, tr, td, th {
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+
+  <div>
+      <div>
+          <button><a href="/">Home</a></button>
+      </div>
+    <div>
+        <label for="books-select"> Books </label>
+        <select id="books-select">
+            {% for book in books %}
+              <option value="{{book.id}}">{{book.title}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="student-select"> Students </label>
+        <select id="student-select">
+            {% for student in students %}
+              <option value="{{student.id}}">{{student.name}}</option>
+            {% endfor %}
+        </select>
+
+        <button id="assign" onclick="assign_book()"> Assign Book</button>
+    </div>
+      <br>
+      <br>
+      <h1> List of Assigned Books </h1>
+      <div>
+          <table>
+              <thead>
+                <th>Student Name</th>
+                <th>Book Title</th>
+                <th>Due Date</th>
+                <th>Return Date</th>
+              </thead>
+              <tbody>
+                {% for book in assigned_books %}
+                    {% if book.returned_date %}
+                        <tr style="background:green;color:#ffff;">
+                    {% else %}
+                            <tr style="background:red;color:#ffff;">
+                    {% endif %}
+                        <td>{{book.student_name}}</td>
+                        <td>{{book.book_name}}</td>
+                        <td>{{book.due_date}}</td>
+                        <td>{{book.returned_date}}</td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+    <script>
+        function assign_book() {
+            var e = document.getElementById("books-select");
+            var book_id = e.value;
+            var e1 = document.getElementById("student-select");
+            var student_id = e1.value;
+            window.location.href = "/assign/book/" + book_id + "/student/" + student_id;
+        }
+    </script>
+
+</body>
+</html>
